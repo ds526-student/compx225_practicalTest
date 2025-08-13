@@ -23,7 +23,8 @@ CREATE TABLE IF NOT EXISTS Author(
 
 CREATE TABLE IF NOT EXISTS BookGenre(
     genre VARCHAR(30) PRIMARY KEY,
-    description VARCHAR(100)
+    description VARCHAR(100),
+    CHECK (genre='horror' OR genre='thriller' OR genre='fantasy' OR genre='romance')
 );
 
 CREATE TABLE IF NOT EXISTS Book(
