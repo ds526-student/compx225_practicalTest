@@ -1,4 +1,6 @@
-
+drop table Test_Customers;
+drop table Test_Food;
+drop table Test_Purchases;
 
 CREATE TABLE Test_Customers (
 CustomerID int PRIMARY KEY,
@@ -19,8 +21,6 @@ FoodID int NOT NULL,
 Quantity int,
 PurchaseDate Date NOT NULL);
 
-----------------------------------------------------
-----------------------------------------------------
 
 insert into Test_Customers values (11,'Chewbacca','Hillcrest','1930-11-28');
 insert into Test_Customers values (12,'Darth Sidious','Silverdale','1952-12-12');
@@ -112,19 +112,20 @@ insert into Test_Purchases values (null,27,63,1,'2023-4-29');
 insert into Test_Purchases values (null,23,42,2,'2023-4-29');
 insert into Test_Purchases values (null,24,46,3,'2023-4-29');
 
--- Name: 
--- Id: 
+-- Name: Damion Sklenars-Clare
+-- Id: 1638052
 
 -- Answer Q4 below
-
+SELECT * FROM test_customers WHERE Suburb = 'Hillcrest';
 
 -- Answer Q5 below
-
+SELECT * FROM test_food WHERE Category = 'sweet' OR Category = 'savory' ORDER BY ItemPrice;
 
 -- Answer Q6 below
-
+SELECT Item FROM test_food WHERE FoodID NOT IN (SELECT FoodID FROM test_purchases);
 
 -- Answer Q7 below
-
+SELECT Item FROM test_food WHERE FoodID IN (SELECT FoodID FROM test_purchases WHERE PurchaseDate = '2023-04-25');
 
 -- Answer Q8 below
+SELECT Item FROM test_food WHERE FoodID IN (SELECT FoodID FROM test_purchases WHERE CustomerID = 13);
